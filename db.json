@@ -1,25 +1,13 @@
 {
-  "lastIds": {
-    "Meal": 4,
-    "Food": 1
-  },
-  "records": {
-    "Meal": [
-      {
-        "name": "TiAmuPeidoskis",
-        "dayId": [
-          "Vitu",
-          "Ama",
-          "Ninous"
-        ],
-        "id": 3
-      }
-    ],
-    "Food": [
-      {
-        "name": "Butter",
-        "id": 1
-      }
-    ]
-  }
+    "lastIds": {
+        "Food": 1
+    },
+    "records": {
+        "Food": [
+            {
+                "name": "Butter",
+                "id": 1
+            }
+        ]
+    }
 }

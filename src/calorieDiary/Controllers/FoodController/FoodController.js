@@ -1,5 +1,6 @@
 import ActiveRecord from "../../Repositories/ActiveRecord.js";
 import FoodService from "../../Services/FoodService/FoodService.js";
+import HttpError from "../../Errors/HttpError.js";
 
 export default class FoodController extends ActiveRecord {
     foodService = new FoodService();
@@ -23,17 +24,23 @@ export default class FoodController extends ActiveRecord {
     };
 
     getAllFoods = (req, res) => {
-        res.send(this.foodRepo.getAll());
+        res.send(this.foodService.getAll());
     };
 
     getFood = (req, res) => {
         const foodId = parseInt(req.params.id);
-        const food = this.foodRepo.getOneById(foodId);
 
-        if (!food) {
-            res.status(404).send({ Error: "Food not found" });
+        try {
+            const food = this.foodService.getOne(foodId);
+
+            res.send(food);
+        } catch (e) {
+            if (e instanceof HttpError) {
+                res.status(e.statusCode).send(e.message);
+            }
+
+            res.status(500).send(e);
         }
-        res.send(food);
     };
 
     updateFood = (req, res) => {
