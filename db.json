@@ -1,13 +1,17 @@
 {
-    "lastIds": {
-        "Food": 1
-    },
-    "records": {
-        "Food": [
-            {
-                "name": "Butter",
-                "id": 1
-            }
-        ]
-    }
+  "lastIds": {
+    "Food": 6
+  },
+  "records": {
+    "Food": [
+      {
+        "name": "Carne",
+        "id": 5
+      },
+      {
+        "name": "Jam",
+        "id": 6
+      }
+    ]
+  }
 }

@@ -39,15 +39,15 @@ class ActiveRecord {
 
         let madeChanges = false;
 
-        db.records[className].map((record) => {
-            const hasSameId = record.id === this.id;
+        db.records[this.name] = db.records[this.name].map((oldRecord) => {
+            const hasSameId = oldRecord.id === record.id;
 
             if (hasSameId) {
                 madeChanges = true;
-                return this;
+                return record;
             }
 
-            return record;
+            return oldRecord;
         });
 
         ActiveRecord._serialize();
@@ -114,6 +114,7 @@ class ActiveRecord {
 
                 db = JSON.parse(dbFile);
             }
+
             // logical nullish assignment
             db.lastIds[modelName] ??= 0;
             db.records[modelName] ??= [];

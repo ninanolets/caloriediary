@@ -45,18 +45,31 @@ export default class FoodController extends ActiveRecord {
 
     updateFood = (req, res) => {
         const foodId = parseInt(req.params.id);
-        const { foodName, foodKcal } = req.body;
 
-        const updatedFood = this.foodRepo.update(foodId, {
-            foodName,
-            foodKcal,
-        });
-        res.status(201).send(updatedFood);
+        try {
+            const updatedFood = this.foodService.update(req.body, foodId);
+            res.status(200).send(updatedFood);
+        } catch (e) {
+            if (e instanceof HttpError) {
+                res.status(e.statusCode).send(e.message);
+            }
+
+            res.status(500).send(e.message);
+        }
     };
 
     deleteFood = (req, res) => {
         const foodId = parseInt(req.params.id);
-        const allNewFoods = this.foodRepo.delete(foodId);
-        res.send(allNewFoods);
+
+        try {
+            this.foodService.delete(foodId);
+            res.status(204).send();
+        } catch (e) {
+            if (e instanceof HttpError) {
+                res.status(e.statusCode).send(e.message);
+            }
+
+            res.status(500).send(e.message);
+        }
     };
 }

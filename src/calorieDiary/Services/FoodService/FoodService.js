@@ -22,4 +22,16 @@ export default class FoodService {
 
         return food;
     }
+
+    update(foodToUpdate, id) {
+        const food = this.getOne(id);
+        const updatedFood = { ...food, ...foodToUpdate };
+        Food.update(updatedFood);
+
+        return updatedFood;
+    }
+
+    delete(id) {
+        Food.delete(id);
+    }
 }
