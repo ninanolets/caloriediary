@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import FoodController from "../calorieDiary/Controllers/FoodController/FoodController.js";
+import NutritionalInformationController from "../calorieDiary/Controllers/NutriInfoController/NutritionalInformationController.js";
 
 class App {
     constructor(port) {
@@ -31,6 +32,9 @@ class App {
     configureRoutes() {
         const foodController = new FoodController();
         foodController.setupRoutes(this.webServer);
+
+        const nutriInfoController = new NutritionalInformationController();
+        nutriInfoController.setupRoutes(this.webServer);
     }
 }
 

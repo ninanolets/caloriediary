@@ -30,6 +30,18 @@ class ActiveRecord {
     }
 
     /**
+     * Finds record based on filter provided.
+     * @param {string} filterName info of the record you want to find.
+     * @param {number | string} filterData info of the record you want to find.
+     * @returns an instance with the matching filter, or undefined if it is not found.
+     */
+    static getOneByFilter(filterName, filterData) {
+        ActiveRecord._initialize(this.name);
+
+        return db.records[this.name].find((record) => record[filterName] === filterData);
+    }
+
+    /**
      * Finds record with same id as the one passed in the argument, and updates it with new values.
      * @param {ActiveRecord} record to be updated.
      * @returns {boolean} Whether a change was made or not.
