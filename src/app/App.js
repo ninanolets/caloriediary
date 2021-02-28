@@ -1,7 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
 import FoodController from "../calorieDiary/Controllers/FoodController/FoodController.js";
-import FoodRepository from "../calorieDiary/Repositories/FoodRepository/FoodRepository.js";
 
 class App {
     constructor(port) {
@@ -18,12 +17,6 @@ class App {
         });
     }
 
-    configureRoutes() {
-        const foodsRepo = new FoodRepository();
-        const foodController = new FoodController(foodsRepo);
-        foodController.setupRoutes(this.webServer);
-    }
-
     configureMiddlewares() {
         this.webServer.use(
             bodyParser.urlencoded({
@@ -33,6 +26,11 @@ class App {
         );
 
         this.webServer.use(bodyParser.json());
+    }
+
+    configureRoutes() {
+        const foodController = new FoodController();
+        foodController.setupRoutes(this.webServer);
     }
 }
 
