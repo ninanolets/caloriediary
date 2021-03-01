@@ -2,7 +2,7 @@
   "lastIds": {
     "Food": 8,
     "NutritionalInformation": 7,
-    "Day": 2
+    "Day": 5
   },
   "records": {
     "Food": [
@@ -33,19 +33,11 @@
     "Day": [
       {
         "kcalGoal": 2500,
-        "proteinGoal": 120,
-        "fatGoal": 55,
-        "carbsGoal": 100,
-        "date": "01.03.2021",
-        "id": 1
-      },
-      {
-        "kcalGoal": 2500,
         "proteinGoal": 200,
         "fatGoal": 80,
         "carbsGoal": 100,
         "date": "02.03.2021",
-        "id": 2
+        "id": 3
       }
     ]
   }

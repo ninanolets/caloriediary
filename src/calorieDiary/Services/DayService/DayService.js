@@ -21,6 +21,16 @@ export default class DayService {
         return day;
     }
 
-    update() {}
-    delete() {}
+    update(dayId, attrs) {
+        const oldDayInfo = this.get(dayId);
+        const updatedDay = { ...oldDayInfo, ...attrs };
+        Day.update(updatedDay);
+
+        return updatedDay;
+    }
+
+    delete(dayId) {
+        this.get(dayId);
+        Day.delete(dayId);
+    }
 }

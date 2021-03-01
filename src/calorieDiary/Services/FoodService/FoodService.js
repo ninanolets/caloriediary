@@ -32,6 +32,7 @@ export default class FoodService {
     }
 
     delete(id) {
+        this.getOne(id);
         Food.delete(id);
     }
 }

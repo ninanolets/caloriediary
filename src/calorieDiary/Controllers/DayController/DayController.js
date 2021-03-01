@@ -36,7 +36,34 @@ export default class DayController {
         }
     };
 
-    updateDay = (req, res) => {};
+    updateDay = (req, res) => {
+        const dayId = parseInt(req.params.id);
 
-    deleteDay = (req, res) => {};
+        try {
+            const updatedDay = this.dayService.update(dayId, req.body);
+
+            res.status(201).send(updatedDay);
+        } catch (e) {
+            if (e instanceof HttpError) {
+                res.status(e.statusCode).send(e.message);
+            } else {
+                res.status(500).send(e.message);
+            }
+        }
+    };
+
+    deleteDay = (req, res) => {
+        const dayId = parseInt(req.params.id);
+
+        try {
+            this.dayService.delete(dayId);
+            res.status(200).send();
+        } catch (e) {
+            if (e instanceof HttpError) {
+                res.status(e.statusCode).send(e.message);
+            } else {
+                res.status(500).send(e.message);
+            }
+        }
+    };
 }
