@@ -21,7 +21,13 @@ export default class FoodPortionService {
         return foodPortion;
     }
 
-    update() {}
+    update(foodPortionId, attrs) {
+        const oldFoodPortion = this.get(foodPortionId);
+        const foodPortionToUpdate = { ...oldFoodPortion, ...attrs };
+        FoodPortion.update(foodPortionToUpdate);
+
+        return foodPortionToUpdate;
+    }
 
     delete() {}
 }

@@ -31,7 +31,20 @@ export default class FoodPortionController {
         }
     };
 
-    updateFoodPortion = (req, res) => {};
+    updateFoodPortion = (req, res) => {
+        const foodPortionId = parseInt(req.params.id);
+
+        try {
+            const updatedFoodPortion = this.foodPortionService.update(
+                foodPortionId,
+                req.body
+            );
+
+            res.status(200).send(updatedFoodPortion);
+        } catch (e) {
+            handleError(res, e);
+        }
+    };
 
     deleteFoodPortion = (req, res) => {};
 }

@@ -87,9 +87,9 @@
     ],
     "FoodPortion": [
       {
-        "foodId": 6,
-        "mealId": 5,
-        "quantityInGrams": 100,
+        "foodId": 7,
+        "mealId": 3,
+        "quantityInGrams": 300,
         "id": 1
       },
       {
