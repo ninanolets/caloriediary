@@ -1,3 +1,4 @@
+import handleError from "../../Errors/handleError.js";
 import FoodPortionService from "../../Services/FoodPortionService/FoodPortionService.js";
 
 export default class FoodPortionController {
@@ -18,7 +19,17 @@ export default class FoodPortionController {
         res.status(201).send(foodPortion);
     };
 
-    getFoodPortion = (req, res) => {};
+    getFoodPortion = (req, res) => {
+        const foodPortionId = parseInt(req.params.id);
+
+        try {
+            const foodPortion = this.foodPortionService.get(foodPortionId);
+
+            res.status(200).send(foodPortion);
+        } catch (e) {
+            handleError(res, e);
+        }
+    };
 
     updateFoodPortion = (req, res) => {};
 

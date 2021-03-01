@@ -1,3 +1,4 @@
+import HttpError from "../../Errors/HttpError.js";
 import FoodPortion from "../../Models/FoodPortion.js";
 
 export default class FoodPortionService {
@@ -10,7 +11,15 @@ export default class FoodPortionService {
         return foodPortion;
     }
 
-    get() {}
+    get(foodPortionId) {
+        const foodPortion = FoodPortion.getOneById(foodPortionId);
+
+        if (!foodPortion) {
+            throw new HttpError(`Food portion with id: ${foodPortionId} not found`, 404);
+        }
+
+        return foodPortion;
+    }
 
     update() {}
 
