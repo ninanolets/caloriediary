@@ -1,55 +1,33 @@
 {
-    "lastIds": {
-        "Food": 8,
-        "NutritionalInformation": 4
-    },
-    "records": {
-        "Food": [
-            {
-                "name": "Carne",
-                "id": 5
-            },
-            {
-                "name": "Jam",
-                "id": 6
-            },
-            {
-                "name": "Eggs",
-                "id": 7
-            },
-            {
-                "name": "Pasta",
-                "id": 8
-            }
-        ],
-        "NutritionalInformation": [
-            {
-                "foodId": 6,
-                "portionInGrams": 100,
-                "proteinPerPortion": 10,
-                "carbsPerPortion": 15,
-                "fatPerPortion": 35,
-                "kcalPerPortion": 20,
-                "id": 1
-            },
-            {
-                "foodId": 5,
-                "portionInGrams": 100,
-                "proteinPerPortion": 30,
-                "carbsPerPortion": 25,
-                "fatPerPortion": 20,
-                "kcalPerPortion": 10,
-                "id": 2
-            },
-            {
-                "foodId": 7,
-                "portionInGrams": 40,
-                "proteinPerPortion": 20,
-                "carbsPerPortion": 34,
-                "fatPerPortion": 10,
-                "kcalPerPortion": 5,
-                "id": 3
-            }
-        ]
-    }
+  "lastIds": {
+    "Food": 8,
+    "NutritionalInformation": 7
+  },
+  "records": {
+    "Food": [
+      {
+        "name": "Jam",
+        "id": 6
+      },
+      {
+        "name": "Eggs",
+        "id": 7
+      },
+      {
+        "name": "Pasta",
+        "id": 8
+      }
+    ],
+    "NutritionalInformation": [
+      {
+        "foodId": 6,
+        "portionInGrams": 10,
+        "proteinPerPortion": 8,
+        "carbsPerPortion": 34,
+        "fatPerPortion": 10,
+        "kcalPerPortion": 5,
+        "id": 5
+      }
+    ]
+  }
 }

@@ -30,9 +30,25 @@ export default class NutritionalInformationService {
         const nutri = NutritionalInformation.getOneByFilter("foodId", foodId);
 
         if (!nutri) {
-            throw new HttpError(`Could not find nutritional information of food with id ${foodId}`);
+            throw new HttpError(
+                `Could not find nutritional information of food with id ${foodId}`,
+                404
+            );
         }
 
         return nutri;
+    }
+
+    update(foodId, attrs) {
+        const oldNutriInfo = this.getInfo(foodId);
+        const updatedNutri = { ...oldNutriInfo, ...attrs };
+        NutritionalInformation.update(updatedNutri);
+
+        return updatedNutri;
+    }
+
+    delete(foodId) {
+        const nutriInfoToDelete = this.getInfo(foodId);
+        NutritionalInformation.delete(nutriInfoToDelete.id);
     }
 }

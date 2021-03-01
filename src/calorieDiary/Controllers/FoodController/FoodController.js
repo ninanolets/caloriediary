@@ -37,9 +37,9 @@ export default class FoodController extends ActiveRecord {
         } catch (e) {
             if (e instanceof HttpError) {
                 res.status(e.statusCode).send(e.message);
+            } else {
+                res.status(500).send(e);
             }
-
-            res.status(500).send(e);
         }
     };
 
@@ -52,9 +52,9 @@ export default class FoodController extends ActiveRecord {
         } catch (e) {
             if (e instanceof HttpError) {
                 res.status(e.statusCode).send(e.message);
+            } else {
+                res.status(500).send(e.message);
             }
-
-            res.status(500).send(e.message);
         }
     };
 
@@ -67,9 +67,9 @@ export default class FoodController extends ActiveRecord {
         } catch (e) {
             if (e instanceof HttpError) {
                 res.status(e.statusCode).send(e.message);
+            } else {
+                res.status(500).send(e.message);
             }
-
-            res.status(500).send(e.message);
         }
     };
 }
