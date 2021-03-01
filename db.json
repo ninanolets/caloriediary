@@ -78,20 +78,9 @@
         "dayId": 4,
         "name": "Dinner",
         "id": 4
-      },
-      {
-        "dayId": 2,
-        "name": "Snack",
-        "id": 5
       }
     ],
     "FoodPortion": [
-      {
-        "foodId": 7,
-        "mealId": 3,
-        "quantityInGrams": 300,
-        "id": 1
-      },
       {
         "foodId": 7,
         "mealId": 4,

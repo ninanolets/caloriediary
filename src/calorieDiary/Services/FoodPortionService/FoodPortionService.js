@@ -29,5 +29,8 @@ export default class FoodPortionService {
         return foodPortionToUpdate;
     }
 
-    delete() {}
+    delete(foodPortionId) {
+        this.get(foodPortionId);
+        FoodPortion.delete(foodPortionId);
+    }
 }

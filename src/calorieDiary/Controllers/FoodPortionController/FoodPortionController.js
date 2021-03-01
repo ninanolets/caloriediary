@@ -46,5 +46,14 @@ export default class FoodPortionController {
         }
     };
 
-    deleteFoodPortion = (req, res) => {};
+    deleteFoodPortion = (req, res) => {
+        const foodPortionId = parseInt(req.params.id);
+
+        try {
+            this.foodPortionService.delete(foodPortionId);
+            res.status(204).send();
+        } catch (e) {
+            handleError(res, e);
+        }
+    };
 }
