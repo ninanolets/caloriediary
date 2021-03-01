@@ -3,7 +3,8 @@
     "Food": 8,
     "NutritionalInformation": 9,
     "Day": 9,
-    "Meal": 5
+    "Meal": 5,
+    "FoodPortion": 2
   },
   "records": {
     "Food": [
@@ -70,18 +71,32 @@
     "Meal": [
       {
         "dayId": 4,
-        "name": "BUBLES",
+        "name": "Breakfast",
         "id": 3
       },
       {
         "dayId": 4,
-        "name": "PEANUT",
+        "name": "Dinner",
         "id": 4
       },
       {
         "dayId": 2,
-        "name": "juice",
+        "name": "Snack",
         "id": 5
+      }
+    ],
+    "FoodPortion": [
+      {
+        "foodId": 6,
+        "mealId": 5,
+        "quantityInGrams": 100,
+        "id": 1
+      },
+      {
+        "foodId": 7,
+        "mealId": 4,
+        "quantityInGrams": 200,
+        "id": 2
       }
     ]
   }

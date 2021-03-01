@@ -5,6 +5,7 @@ import FoodController from "../calorieDiary/Controllers/FoodController/FoodContr
 import NutritionalInformationController from "../calorieDiary/Controllers/NutriInfoController/NutritionalInformationController.js";
 import DayController from "../calorieDiary/Controllers/DayController/DayController.js";
 import MealController from "../calorieDiary/Controllers/MealController/MealController.js";
+import FoodPortionController from "../calorieDiary/Controllers/FoodPortionController/FoodPortionController.js";
 
 export default class App {
     constructor(port) {
@@ -44,5 +45,8 @@ export default class App {
 
         const mealController = new MealController();
         mealController.setupRoutes(this.webServer);
+
+        const foodPortionController = new FoodPortionController();
+        foodPortionController.setupRoutes(this.webServer);
     }
 }
