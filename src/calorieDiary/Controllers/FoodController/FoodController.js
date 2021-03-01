@@ -1,6 +1,7 @@
 import ActiveRecord from "../../Repositories/ActiveRecord.js";
 import FoodService from "../../Services/FoodService/FoodService.js";
 import HttpError from "../../Errors/HttpError.js";
+import handleError from "../../Errors/handleError.js";
 
 export default class FoodController extends ActiveRecord {
     foodService = new FoodService();
@@ -35,11 +36,7 @@ export default class FoodController extends ActiveRecord {
 
             res.send(food);
         } catch (e) {
-            if (e instanceof HttpError) {
-                res.status(e.statusCode).send(e.message);
-            } else {
-                res.status(500).send(e);
-            }
+            handleError(res, e);
         }
     };
 
@@ -50,11 +47,7 @@ export default class FoodController extends ActiveRecord {
             const updatedFood = this.foodService.update(req.body, foodId);
             res.status(200).send(updatedFood);
         } catch (e) {
-            if (e instanceof HttpError) {
-                res.status(e.statusCode).send(e.message);
-            } else {
-                res.status(500).send(e.message);
-            }
+            handleError(res, e);
         }
     };
 
@@ -65,11 +58,7 @@ export default class FoodController extends ActiveRecord {
             this.foodService.delete(foodId);
             res.status(204).send();
         } catch (e) {
-            if (e instanceof HttpError) {
-                res.status(e.statusCode).send(e.message);
-            } else {
-                res.status(500).send(e.message);
-            }
+            handleError(res, e);
         }
     };
 }

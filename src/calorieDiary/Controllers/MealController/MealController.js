@@ -1,69 +1,70 @@
-import MealRepository from "../../Repositories/MealRepository/MealRepository.js";
-import { dummyMealData } from "../../Repositories/MealRepository/dummyMealData.js";
+import handleError from "../../Errors/handleError.js";
 import MealService from "../../Services/MealService/MealService.js";
-import Meal from "../../Models/Meal.js";
 
-class MealController {
-    mealRepo = new MealRepository(dummyMealData);
+export default class MealController {
     mealService = new MealService();
 
     setupRoutes(webServer) {
-        // CREATE
-        webServer.post("/meal", this.createMealRecord);
+        webServer.post("/meal", this.createMeal);
 
-        // READ
-        webServer.get("/meal", this.getAllMeals);
-        webServer.get("/meal/:id", this.getMealRecord);
+        webServer.get("/meal/:id", this.getMeal);
+        webServer.get("/meals/:dayId", this.getDayMeals);
 
-        // UPDATE
-        webServer.put("/meal/:id", this.updateMealRecord);
+        webServer.put("/meal/:id", this.updateMeal);
 
-        // DElETE
-        webServer.delete("/meal/:id", this.deleteMealRecord);
+        webServer.delete("/meal/:id", this.deleteMeal);
     }
 
-    createMealRecord = (req, res) => {
-        const { mealTime, foods } = req.body;
-        const meal = new Meal(mealTime, foods);
-        meal.save();
-
-        res.status(201).send(meal);
+    createMeal = (req, res) => {
+        const newMeal = this.mealService.create(req.body);
+        res.status(201).send(newMeal);
     };
 
-    // READ
-    getAllMeals = (req, res) => {
-        res.send(Meal.getAll());
-    };
-
-    getMealRecord = (req, res) => {
+    getMeal = (req, res) => {
         const mealId = parseInt(req.params.id);
-        const meal = Meal.getOneById(mealId);
 
-        if (!meal) {
-            res.status(404).send("Meal not found");
+        try {
+            const meal = this.mealService.getOne(mealId);
+
+            res.status(200).send(meal);
+        } catch (e) {
+            handleError(res, e);
         }
-
-        res.send(meal);
     };
 
-    updateMealRecord = (req, res) => {
-        const { mealTime, foods } = req.body;
-        const mealId = parseInt(req.params.id);
+    getDayMeals = (req, res) => {
+        const dayId = parseInt(req.params.dayId);
 
-        const updatedMeal = Meal.update(mealId, {
-            mealTime,
-            foods,
-        });
+        try {
+            const dayMeals = this.mealService.getMealsOfDay(dayId);
 
-        res.status(201).send(updatedMeal);
+            res.status(200).send(dayMeals);
+        } catch (e) {
+            handleError(res, e);
+        }
     };
 
-    // DElETE
-    deleteMealRecord = (req, res) => {
+    updateMeal = (req, res) => {
         const mealId = parseInt(req.params.id);
-        Meal.delete(mealId);
-        res.send(Meal.getAll());
+
+        try {
+            const updatedMeal = this.mealService.update(mealId, req.body);
+
+            res.status(200).send(updatedMeal);
+        } catch (e) {
+            handleError(res, e);
+        }
+    };
+
+    deleteMeal = (req, res) => {
+        const mealId = parseInt(req.params.id);
+
+        try {
+            this.mealService.delete(mealId);
+
+            res.status(204).send();
+        } catch (e) {
+            handleError(res, e);
+        }
     };
 }
-
-export default MealController;

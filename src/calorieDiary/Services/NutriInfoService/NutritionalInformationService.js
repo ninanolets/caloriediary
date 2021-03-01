@@ -27,9 +27,9 @@ export default class NutritionalInformationService {
     }
 
     getInfo(foodId) {
-        const nutri = NutritionalInformation.getOneByFilter("foodId", foodId);
+        const nutri = NutritionalInformation.getByFilter("foodId", foodId);
 
-        if (!nutri) {
+        if (nutri.length < 1) {
             throw new HttpError(
                 `Could not find nutritional information of food with id ${foodId}`,
                 404

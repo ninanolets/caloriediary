@@ -1,3 +1,4 @@
+import handleError from "../../Errors/handleError.js";
 import HttpError from "../../Errors/HttpError.js";
 import NutritionalInformationService from "../../Services/NutriInfoService/NutritionalInformationService.js";
 
@@ -30,11 +31,7 @@ export default class NutritionalInformationController {
 
             res.send(nutri);
         } catch (e) {
-            if (e instanceof HttpError) {
-                res.status(e.statusCode).send(e.message);
-            } else {
-                res.status(500).send(e.message);
-            }
+            handleError(res, e);
         }
     };
 
@@ -46,11 +43,7 @@ export default class NutritionalInformationController {
 
             res.status(200).send(updatedNutri);
         } catch (e) {
-            if (e instanceof HttpError) {
-                res.status(e.statusCode).send(e.message);
-            } else {
-                res.status(500).send(e.message);
-            }
+            handleError(res, e);
         }
     };
 
@@ -61,11 +54,7 @@ export default class NutritionalInformationController {
             this.nutriService.delete(foodId);
             res.status(204).send();
         } catch (e) {
-            if (e instanceof HttpError) {
-                res.status(e.statusCode).send(e.message);
-            } else {
-                res.status(500).send(e.message);
-            }
+            handleError(res, e);
         }
     };
 }

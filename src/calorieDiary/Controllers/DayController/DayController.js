@@ -1,3 +1,4 @@
+import handleError from "../../Errors/handleError.js";
 import HttpError from "../../Errors/HttpError.js";
 import DayService from "../../Services/DayService/DayService.js";
 
@@ -28,11 +29,7 @@ export default class DayController {
 
             res.status(200).send(day);
         } catch (e) {
-            if (e instanceof HttpError) {
-                res.status(e.statusCode).send(e.message);
-            } else {
-                res.status(500).send(e.message);
-            }
+            handleError(res, e);
         }
     };
 
@@ -44,11 +41,7 @@ export default class DayController {
 
             res.status(201).send(updatedDay);
         } catch (e) {
-            if (e instanceof HttpError) {
-                res.status(e.statusCode).send(e.message);
-            } else {
-                res.status(500).send(e.message);
-            }
+            handleError(res, e);
         }
     };
 
@@ -57,13 +50,9 @@ export default class DayController {
 
         try {
             this.dayService.delete(dayId);
-            res.status(200).send();
+            res.status(204).send();
         } catch (e) {
-            if (e instanceof HttpError) {
-                res.status(e.statusCode).send(e.message);
-            } else {
-                res.status(500).send(e.message);
-            }
+            handleError(res, e);
         }
     };
 }

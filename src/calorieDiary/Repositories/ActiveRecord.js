@@ -35,10 +35,10 @@ class ActiveRecord {
      * @param {number | string} filterData info of the record you want to find.
      * @returns an instance with the matching filter, or undefined if it is not found.
      */
-    static getOneByFilter(filterName, filterData) {
+    static getByFilter(filterName, filterData) {
         ActiveRecord._initialize(this.name);
 
-        return db.records[this.name].find((record) => record[filterName] === filterData);
+        return db.records[this.name].filter((record) => record[filterName] === filterData);
     }
 
     /**

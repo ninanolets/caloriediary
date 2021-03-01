@@ -1,8 +1,9 @@
 {
   "lastIds": {
     "Food": 8,
-    "NutritionalInformation": 7,
-    "Day": 5
+    "NutritionalInformation": 9,
+    "Day": 9,
+    "Meal": 5
   },
   "records": {
     "Food": [
@@ -28,16 +29,59 @@
         "fatPerPortion": 10,
         "kcalPerPortion": 5,
         "id": 5
+      },
+      {
+        "foodId": 7,
+        "portionInGrams": 2,
+        "proteinPerPortion": 7,
+        "carbsPerPortion": 777,
+        "fatPerPortion": 7777,
+        "kcalPerPortion": 9,
+        "id": 8
+      },
+      {
+        "foodId": 8,
+        "portionInGrams": 2,
+        "proteinPerPortion": 8,
+        "carbsPerPortion": 888,
+        "fatPerPortion": 8888,
+        "kcalPerPortion": 9,
+        "id": 9
       }
     ],
     "Day": [
       {
-        "kcalGoal": 2500,
-        "proteinGoal": 200,
-        "fatGoal": 80,
-        "carbsGoal": 100,
+        "kcalGoal": 200,
+        "proteinGoal": 1,
+        "fatGoal": 3,
+        "carbsGoal": 2,
         "date": "02.03.2021",
         "id": 3
+      },
+      {
+        "kcalGoal": 5000,
+        "proteinGoal": 500,
+        "fatGoal": 50,
+        "carbsGoal": 500,
+        "date": "04.03.2021",
+        "id": 8
+      }
+    ],
+    "Meal": [
+      {
+        "dayId": 4,
+        "name": "BUBLES",
+        "id": 3
+      },
+      {
+        "dayId": 4,
+        "name": "PEANUT",
+        "id": 4
+      },
+      {
+        "dayId": 2,
+        "name": "juice",
+        "id": 5
       }
     ]
   }
