@@ -1,5 +1,4 @@
 import handleError from "../../Errors/handleError.js";
-import HttpError from "../../Errors/HttpError.js";
 import DayService from "../../Services/DayService/DayService.js";
 
 export default class DayController {
@@ -9,6 +8,8 @@ export default class DayController {
         webServer.post("/day", this.createDay);
 
         webServer.get("/day/:id", this.getDay);
+
+        webServer.get("/day/macros/:id", this.getMacrosLeft);
 
         webServer.put("/day/:id", this.updateDay);
 
@@ -28,6 +29,18 @@ export default class DayController {
             const day = this.dayService.get(dayId);
 
             res.status(200).send(day);
+        } catch (e) {
+            handleError(res, e);
+        }
+    };
+
+    getMacrosLeft = (req, res) => {
+        const dayId = parseInt(req.params.id);
+
+        try {
+            const macrosLeft = this.dayService.getMacros(dayId);
+
+            res.status(200).send(macrosLeft);
         } catch (e) {
             handleError(res, e);
         }

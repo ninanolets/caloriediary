@@ -1,92 +1,235 @@
 {
-  "lastIds": {
-    "Food": 8,
-    "NutritionalInformation": 9,
-    "Day": 9,
-    "Meal": 5,
-    "FoodPortion": 2
-  },
-  "records": {
-    "Food": [
-      {
-        "name": "Jam",
-        "id": 6
-      },
-      {
-        "name": "Eggs",
-        "id": 7
-      },
-      {
-        "name": "Pasta",
-        "id": 8
-      }
-    ],
-    "NutritionalInformation": [
-      {
-        "foodId": 6,
-        "portionInGrams": 10,
-        "proteinPerPortion": 8,
-        "carbsPerPortion": 34,
-        "fatPerPortion": 10,
-        "kcalPerPortion": 5,
-        "id": 5
-      },
-      {
-        "foodId": 7,
-        "portionInGrams": 2,
-        "proteinPerPortion": 7,
-        "carbsPerPortion": 777,
-        "fatPerPortion": 7777,
-        "kcalPerPortion": 9,
-        "id": 8
-      },
-      {
-        "foodId": 8,
-        "portionInGrams": 2,
-        "proteinPerPortion": 8,
-        "carbsPerPortion": 888,
-        "fatPerPortion": 8888,
-        "kcalPerPortion": 9,
-        "id": 9
-      }
-    ],
-    "Day": [
-      {
-        "kcalGoal": 200,
-        "proteinGoal": 1,
-        "fatGoal": 3,
-        "carbsGoal": 2,
-        "date": "02.03.2021",
-        "id": 3
-      },
-      {
-        "kcalGoal": 5000,
-        "proteinGoal": 500,
-        "fatGoal": 50,
-        "carbsGoal": 500,
-        "date": "04.03.2021",
-        "id": 8
-      }
-    ],
-    "Meal": [
-      {
-        "dayId": 4,
-        "name": "Breakfast",
-        "id": 3
-      },
-      {
-        "dayId": 4,
-        "name": "Dinner",
-        "id": 4
-      }
-    ],
-    "FoodPortion": [
-      {
-        "foodId": 7,
-        "mealId": 4,
-        "quantityInGrams": 200,
-        "id": 2
-      }
-    ]
-  }
+    "lastIds": {
+        "Food": 7,
+        "NutritionalInformation": 7,
+        "Day": 3,
+        "Meal": 9,
+        "FoodPortion": 9
+    },
+    "records": {
+        "Food": [
+            {
+                "name": "Arroz",
+                "id": 1
+            },
+            {
+                "name": "Feijao",
+                "id": 2
+            },
+            {
+                "name": "Batata",
+                "id": 3
+            },
+            {
+                "name": "Macarrao",
+                "id": 4
+            },
+            {
+                "name": "Ovo",
+                "id": 5
+            },
+            {
+                "name": "Abacate",
+                "id": 6
+            },
+            {
+                "name": "Fava",
+                "id": 7
+            }
+        ],
+        "NutritionalInformation": [
+            {
+                "foodId": 1,
+                "portionInGrams": 100,
+                "proteinPerPortion": 11,
+                "carbsPerPortion": 20,
+                "fatPerPortion": 4,
+                "kcalPerPortion": 200,
+                "id": 7
+            },
+            {
+                "foodId": 2,
+                "portionInGrams": 200,
+                "proteinPerPortion": 22,
+                "carbsPerPortion": 10,
+                "fatPerPortion": 2,
+                "kcalPerPortion": 150,
+                "id": 6
+            },
+            {
+                "foodId": 3,
+                "portionInGrams": 100,
+                "proteinPerPortion": 7,
+                "carbsPerPortion": 10,
+                "fatPerPortion": 8,
+                "kcalPerPortion": 300,
+                "id": 5
+            },
+            {
+                "foodId": 4,
+                "portionInGrams": 100,
+                "proteinPerPortion": 4,
+                "carbsPerPortion": 4,
+                "fatPerPortion": 4,
+                "kcalPerPortion": 44,
+                "id": 3
+            },
+            {
+                "foodId": 5,
+                "portionInGrams": 50,
+                "proteinPerPortion": 10,
+                "carbsPerPortion": 5,
+                "fatPerPortion": 5,
+                "kcalPerPortion": 80,
+                "id": 4
+            },
+            {
+                "foodId": 6,
+                "portionInGrams": 50,
+                "proteinPerPortion": 12,
+                "carbsPerPortion": 13,
+                "fatPerPortion": 6,
+                "kcalPerPortion": 100,
+                "id": 2
+            },
+            {
+                "foodId": 7,
+                "portionInGrams": 50,
+                "proteinPerPortion": 1,
+                "carbsPerPortion": 1,
+                "fatPerPortion": 1,
+                "kcalPerPortion": 60,
+                "id": 1
+            }
+        ],
+        "Day": [
+            {
+                "kcalGoal": 2000,
+                "proteinGoal": 500,
+                "fatGoal": 50,
+                "carbsGoal": 500,
+                "date": "01.03.2021",
+                "id": 1
+            },
+            {
+                "kcalGoal": 1000,
+                "proteinGoal": 300,
+                "fatGoal": 30,
+                "carbsGoal": 300,
+                "date": "02.03.2021",
+                "id": 2
+            },
+            {
+                "kcalGoal": 1000,
+                "proteinGoal": 100,
+                "fatGoal": 20,
+                "carbsGoal": 30,
+                "date": "03.03.2021",
+                "id": 3
+            }
+        ],
+        "Meal": [
+            {
+                "dayId": 1,
+                "name": "Breakfast",
+                "id": 1
+            },
+            {
+                "dayId": 1,
+                "name": "Lunch",
+                "id": 2
+            },
+            {
+                "dayId": 1,
+                "name": "Dinner",
+                "id": 3
+            },
+            {
+                "dayId": 2,
+                "name": "Breakfast",
+                "id": 4
+            },
+            {
+                "dayId": 2,
+                "name": "Lunch",
+                "id": 5
+            },
+            {
+                "dayId": 2,
+                "name": "Dinner",
+                "id": 6
+            },
+            {
+                "dayId": 3,
+                "name": "Breakfast",
+                "id": 7
+            },
+            {
+                "dayId": 3,
+                "name": "Lunch",
+                "id": 8
+            },
+            {
+                "dayId": 3,
+                "name": "Dinner",
+                "id": 9
+            }
+        ],
+        "FoodPortion": [
+            {
+                "foodId": 7,
+                "mealId": 1,
+                "quantityInGrams": 200,
+                "id": 1
+            },
+            {
+                "foodId": 6,
+                "mealId": 4,
+                "quantityInGrams": 130,
+                "id": 2
+            },
+            {
+                "foodId": 5,
+                "mealId": 7,
+                "quantityInGrams": 100,
+                "id": 3
+            },
+            {
+                "foodId": 4,
+                "mealId": 2,
+                "quantityInGrams": 200,
+                "id": 4
+            },
+            {
+                "foodId": 3,
+                "mealId": 5,
+                "quantityInGrams": 100,
+                "id": 5
+            },
+            {
+                "foodId": 2,
+                "mealId": 8,
+                "quantityInGrams": 200,
+                "id": 6
+            },
+            {
+                "foodId": 1,
+                "mealId": 3,
+                "quantityInGrams": 150,
+                "id": 7
+            },
+            {
+                "foodId": 4,
+                "mealId": 9,
+                "quantityInGrams": 150,
+                "id": 8
+            },
+            {
+                "foodId": 7,
+                "mealId": 9,
+                "quantityInGrams": 100,
+                "id": 9
+            }
+        ]
+    }
 }
