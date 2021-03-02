@@ -23,6 +23,16 @@ export default class FoodService {
         return food;
     }
 
+    searchByName(name) {
+        const food = Food.getByFilter("name", name);
+
+        if (!food) {
+            throw new HttpError(`Could not find food with name: ${name}`, 404);
+        }
+
+        return food;
+    }
+
     update(foodToUpdate, id) {
         const food = this.getOne(id);
         const updatedFood = { ...food, ...foodToUpdate };

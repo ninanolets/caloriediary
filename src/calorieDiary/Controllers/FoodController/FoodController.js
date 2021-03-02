@@ -1,6 +1,5 @@
 import ActiveRecord from "../../Repositories/ActiveRecord.js";
 import FoodService from "../../Services/FoodService/FoodService.js";
-import HttpError from "../../Errors/HttpError.js";
 import handleError from "../../Errors/handleError.js";
 
 export default class FoodController extends ActiveRecord {
@@ -11,6 +10,8 @@ export default class FoodController extends ActiveRecord {
 
         webServer.get("/foods", this.getAllFoods);
         webServer.get("/foods/:id", this.getFood);
+
+        webServer.get("/food", this.searchFood);
 
         webServer.put("/foods/:id", this.updateFood);
 
@@ -30,11 +31,24 @@ export default class FoodController extends ActiveRecord {
 
     getFood = (req, res) => {
         const foodId = parseInt(req.params.id);
+        console.log(foodId);
 
         try {
             const food = this.foodService.getOne(foodId);
 
             res.send(food);
+        } catch (e) {
+            handleError(res, e);
+        }
+    };
+
+    searchFood = (req, res) => {
+        const { name } = req.query;
+
+        try {
+            const foodSearched = this.foodService.searchByName(name);
+
+            res.status(200).send(foodSearched);
         } catch (e) {
             handleError(res, e);
         }
