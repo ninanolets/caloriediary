@@ -25,27 +25,58 @@ export default class DayService {
         return day;
     }
 
-    getMacros(dayId) {
+    currentMacros(dayId) {
         const day = Day.getOneById(dayId);
 
         if (!day) {
-            throw new HttpError(`Day with id: ${dayId} not found.`, 404);
+            throw new HttpError(`Day with id: ${dayId} not found`, 400);
         }
 
         const mealsOfDay = Meal.getByFilter("dayId", dayId);
-
-        const { foodPortions, foodInfos } = this.allNutriInfos(mealsOfDay);
-
+        const { foodInfos, foodPortions } = this.allNutriInfos(mealsOfDay);
         const currentMacros = this.getCurrentMacros(foodPortions, foodInfos);
 
+        return currentMacros;
+    }
+
+    getMacros(dayId) {
+        const currentMacros = this.currentMacros(dayId);
+        const { proteinPerDay, fatPerDay, carbsPerDay, kcalPerDay } = currentMacros;
+
+        const day = Day.getOneById(dayId);
+        const { kcalGoal, proteinGoal, fatGoal, carbsGoal } = day;
+
         const macrosLeft = {
-            kcalLeft: day.kcalGoal - currentMacros.kcalPerDay,
-            proteinLeft: day.proteinGoal - currentMacros.proteinPerDay,
-            fatLeft: day.fatGoal - currentMacros.fatPerDay,
-            carbsLeft: day.carbsGoal - currentMacros.carbsPerDay,
+            kcalLeft: kcalGoal - kcalPerDay,
+            proteinLeft: proteinGoal - proteinPerDay,
+            fatLeft: fatGoal - fatPerDay,
+            carbsLeft: carbsGoal - carbsPerDay,
         };
 
         return macrosLeft;
+    }
+
+    getPercentage(dayId) {
+        const currentMacros = this.currentMacros(dayId);
+        const { proteinPerDay, fatPerDay, carbsPerDay, kcalPerDay } = currentMacros;
+
+        const proteinInKcal = proteinPerDay * 4;
+        const fatInKcal = fatPerDay * 9;
+        const carbsInKcal = carbsPerDay * 4;
+
+        const macrosPercent = {
+            proteinKcalPercentage: this.kcalPercentages(proteinInKcal, kcalPerDay),
+            fatKcalPercentage: this.kcalPercentages(fatInKcal, kcalPerDay),
+            carbsKcalPercentage: this.kcalPercentages(carbsInKcal, kcalPerDay),
+        };
+
+        return macrosPercent;
+    }
+
+    kcalPercentages(macroInKcal, kcalPerDay) {
+        const num = (macroInKcal * 100) / kcalPerDay;
+
+        return Math.round((num + Number.EPSILON) * 100) / 100;
     }
 
     allNutriInfos(mealsOfDay) {

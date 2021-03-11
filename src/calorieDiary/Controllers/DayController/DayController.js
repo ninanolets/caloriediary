@@ -10,6 +10,7 @@ export default class DayController {
         webServer.get("/day/:id", this.getDay);
 
         webServer.get("/day/macros/:id", this.getMacrosLeft);
+        webServer.get("/day/percent/:id", this.getMacrosPercentage);
 
         webServer.put("/day/:id", this.updateDay);
 
@@ -41,6 +42,18 @@ export default class DayController {
             const macrosLeft = this.dayService.getMacros(dayId);
 
             res.status(200).send(macrosLeft);
+        } catch (e) {
+            handleError(res, e);
+        }
+    };
+
+    getMacrosPercentage = (req, res) => {
+        const dayId = parseInt(req.params.id);
+
+        try {
+            const macrosPercent = this.dayService.getPercentage(dayId);
+
+            res.status(200).send(macrosPercent);
         } catch (e) {
             handleError(res, e);
         }
